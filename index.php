@@ -52,7 +52,7 @@ function DoPut()
     if($_POST)
     {
     $dbconnect=mysqli_connect('localhost','root','','employee');
-    $query= "INSERT INTO employee ('emp_name', 'emp_city','emp_status') VALUES ('".$_POST['emp_name']."' , '".$_POST['emp_city']."', '".$_POST['emp_status']."')";
+    echo $query= "INSERT INTO employee ('emp_name', 'emp_city','emp_status') VALUES ('".$_POST['emp_name']."' , '".$_POST['emp_city']."', '".$_POST['emp_status']."')";
     $result= mysqli_query($dbconnect, $query);
     if($result == true)
     {
@@ -63,7 +63,7 @@ function DoPut()
         $response = array("message" => "Record not inserted");
     }
 
-    return $response;
+    //return $response;
 }
 
 }
@@ -71,10 +71,11 @@ function DoPost()
 {
     if($_POST)
     {
-    $dbconnect=mysqli_connect('localhost','root','','employee');
-    $query= "INSERT INTO employee ('emp_name', 'emp_city','emp_status') VALUES ('".$_POST['emp_name']."' , '".$_POST['emp_city']."', '".$_POST['emp_status']."')";
-    $result= mysqli_query($dbconnect, $query);
-    if($result == true)
+        $dbconnect=mysqli_connect('localhost','root','','employee');
+        $query= "INSERT INTO `employee` (`emp_name`, `emp_city`,`emp_trash`) VALUES ('".$_POST['emp_name']."' , '".$_POST['emp_city']."', '".$_POST['emp_trash']."')";
+        $result= mysqli_query($dbconnect, $query);
+        
+    if($result == 1)
     {
         $response = array("message" => "Record Inserted");
     }
